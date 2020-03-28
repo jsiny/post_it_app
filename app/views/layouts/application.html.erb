@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Postit</title>
+    <title>Juliette's Post-It App</title>
+   
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,6 +16,26 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/navigation' %>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="main" role="main">
+      <div class="container">
+         <div class="row">
+          <div class="span12">
+            <%= render 'layouts/messages' %>
+            <%= yield %>
+          </div>
+        </div>
+        <footer>
+        </footer>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
   </body>
 </html>

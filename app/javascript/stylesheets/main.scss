@@ -1,6 +1,17 @@
 @import "bootstrap/scss/bootstrap";
 
+// Add some margins 
 .container {
   margin-top: 20px;
   padding: 0 10px;
+}
+
+// Add bottom margins between 2 cards
+.card {
+  margin-bottom: 10px;
+}
+
+// Add margin between badge and header
+.badge {
+  margin-bottom: 10px;
 }

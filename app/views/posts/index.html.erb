@@ -1,19 +1,16 @@
-<p class='lead'>All Posts</p>
-</hr>
+<%= render 'shared/content_title', title: "All Posts" %>
 
 <% @posts.each do |post| %>
   <div class="card">
     <div class="card-header">
-      <% post.categories.each do |category| %>
-        <span class="badge badge-primary"><%= category.name %></span>
-      <% end %>
+      <%= render post.categories %>
       <h5><%= link_to post.title, post.url %></h5>
     </div>
     <div class="card-body">
       <p class="card-text"><%= post.description %></p>
       <p>
         <span class="text-muted">posted by</span> <%= post.creator.username %>
-        <small>at <%= post.created_at %></small>
+        <span class="text-muted">at <%= post.created_at %></span>
       </p>
       <small>
         <span>

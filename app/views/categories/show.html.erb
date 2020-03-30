@@ -1,22 +1,5 @@
 <%= render 'shared/content_title', title: "Category: #{@category.name }" %>
 
 <% @category.posts.each do |post| %>
-  <div class="card">
-    <div class="card-header">
-      <%= render post.categories %>
-      <h5><%= link_to post.title, post.url %></h5>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= post.description %></p>
-      <p>
-        <span class="text-muted">posted by</span> <%= post.creator.username %>
-        <span class="text-muted">at <%= post.created_at %></span>
-      </p>
-      <small>
-        <span>
-          <%= link_to("#{post.comments.size} comments", post_path(post)) %>
-        </span>
-      </small>
-    </div>
-  </div>
+  <%= render 'posts/post', post: post %>
 <% end %>

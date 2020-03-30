@@ -14,4 +14,8 @@
 // Add margin between badge and header
 .badge {
   margin-bottom: 10px;
+  a, a:hover, a:focus {
+    color: #fff;
+    text-decoration: none;
+  }
 }

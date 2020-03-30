@@ -1,15 +1,5 @@
 <%= render 'shared/content_title', title: 'New Category' %>
-
-<% if @category.errors.any? %>
-  <div class="alert alert-danger"> 
-    <p>Please fix the following errors:</p>
-    <ul>
-      <% @category.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/errors', obj: @category %>
 
 <%= form_for @category do |f| %>
   <div class="form-group">

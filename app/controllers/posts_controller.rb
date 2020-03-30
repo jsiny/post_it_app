@@ -8,14 +8,30 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
+    @post = Post.new(strong_params)
+    @post.creator = User.first # to-do: change once we add authentication
+
+    if @post.save
+      flash[:notice] = "Your post was created"
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+  end
+
+  private
+
+  def strong_params
+    params.require(:post).permit(:title, :url, :description)
   end
 end

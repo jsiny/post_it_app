@@ -1,3 +1,7 @@
+<p class="float-right">
+  <%= link_to 'Edit Post', edit_post_path(@post) %>
+</p>
+
 <%= render @post.categories %>
 
 <%= render 'shared/content_title', title: @post.title %>

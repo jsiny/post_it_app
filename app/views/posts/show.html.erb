@@ -10,10 +10,20 @@
   <%= @post.description %>
 </p>
 
-<%= form_for @comment do |f| %>
+<hr/>
+
+<%= render 'shared/errors', obj: @comment %>
+
+<%= form_for [@post, @comment] do |f| %>
   <div class="form-group">
     <%= f.label :body, 'Enter a comment:' %>
     <%= f.text_area :body, class: 'form-control', rows: 5 %>
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+<br/>
+
+<h6>Comments</h6>
+
+

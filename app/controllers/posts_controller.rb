@@ -25,7 +25,8 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @post.update(strong_params)
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
   private
 
   def strong_params
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
   end
 
   def set_post

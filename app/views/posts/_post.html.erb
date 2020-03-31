@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-header">
     <%= render post.categories %>
-    <h5><%= link_to post.title, post.url %></h5>
+    <h5><%= link_to post.title, fix_url(post.url) %></h5>
   </div>
   <div class="card-body">
     <p class="card-text"><%= post.description %></p>
     <p>
       <span class="text-muted">posted by</span> <%= post.creator.username %>
-      <span class="text-muted">at <%= post.created_at %></span>
+      <span class="text-muted">at <%= display_datetime(post.created_at) %></span>
     </p>
     <small>
       <span>

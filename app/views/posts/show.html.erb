@@ -12,28 +12,8 @@
 
 <hr/>
 
-<%= render 'shared/errors', obj: @comment %>
-
-<%= form_for [@post, @comment] do |f| %>
-  <div class="form-group">
-    <%= f.label :body, 'Enter a comment:' %>
-    <%= f.text_area :body, class: 'form-control', rows: 5 %>
-  </div>
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+<%= render 'comments/form' %>
 
 <br/>
 
-<h6>Comments</h6>
-
-<% @post.comments.each do |comment| %>
-  <div class="card">
-    <div class="card-body">
-      <p><em>"<%= comment.body %>"</em></p>
-      <p>
-        <span class="text-muted">by</span> <%= link_to comment.creator.username, '' %>
-        <span class="text-muted">at <%= comment.created_at %></span>
-      </p>
-    </div>
-  </div>
-<% end %>
+<%= render 'comments/post_comments' %>

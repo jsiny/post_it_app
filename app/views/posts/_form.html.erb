@@ -14,10 +14,11 @@
     <%= f.text_area :description, class: 'form-control', rows: 5 %>
   </div>
   <div class='form-group'>
-    <div class='form-check-inline form-check'>
-      <%= f.label 'Categories' %>
+    <%= f.label 'Categories' %>
+    <br/>
+    <div class='form-check form-check-inline'>
       <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
-          <% cb.label(class: 'form-check-label') { cb.check_box(class: 'checkbox') + cb.text } %>
+          <% cb.label(class: 'form-check-label') { cb.check_box(class: 'form-check-input') + cb.text } %>
       <% end %>
     </div>
   </div>

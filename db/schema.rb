@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_090532) do
+ActiveRecord::Schema.define(version: 2020_04_02_093123) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_04_02_090532) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean "vote"
+    t.integer "user_id"
+    t.string "voteable_type"
+    t.integer "voteable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

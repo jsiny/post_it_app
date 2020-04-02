@@ -7,5 +7,5 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
   </div>
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit (@user.new_record? ? 'Register' : 'Update profile'), class: 'btn btn-primary' %>
 <% end %>

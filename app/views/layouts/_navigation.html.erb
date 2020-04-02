@@ -5,9 +5,6 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to 'New Post', new_post_path, class: 'nav-link btn btn-primary', style: "color: white" if logged_in? %>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
@@ -24,14 +21,17 @@
       </li>
       <% if logged_in? %>
         <li class="nav-item">
+          <%= link_to 'New Post', new_post_path, class: 'nav-link btn btn-primary', style: "color: white" %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Log out', logout_path, class: 'nav-link' %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to 'Log in', login_path, class: 'nav-link' %>
+          <%= link_to 'Register', register_path, class: 'nav-link btn btn-primary', style: 'color: white' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Register', register_path, class: 'nav-link' %>
+          <%= link_to 'Log in', login_path, class: 'nav-link' %>
         </li>
       <% end %>
     </ul>

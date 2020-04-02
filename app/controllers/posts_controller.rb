@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by { |x| x.total_votes }.reverse
   end
 
   def show
@@ -36,6 +36,12 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def vote
+    @vote = Vote.create(vote: params[:vote], creator: current_user, voteable: @post)
+    flash[:notice] = "Your comment was created"
+    redirect_back(fallback_location: root_path)
   end
 
   private

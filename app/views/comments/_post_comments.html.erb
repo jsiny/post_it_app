@@ -1,13 +1,5 @@
 <h6>Comments</h6>
 
 <% @post.comments.each do |comment| %>
-  <div class="card">
-    <div class="card-body">
-      <p><em>"<%= comment.body %>"</em></p>
-      <p>
-        <span class="text-muted">by</span> <%= link_to comment.creator.username, '' %>
-        <span class="text-muted">at <%= display_datetime(comment.created_at) %></span>
-      </p>
-    </div>
-  </div>
+  <%= render 'comments/comment', comment: comment, show_post: false %>
 <% end %>

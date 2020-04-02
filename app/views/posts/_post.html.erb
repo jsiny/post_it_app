@@ -6,7 +6,7 @@
   <div class="card-body">
     <p class="card-text"><%= post.description %></p>
     <p>
-      <span class="text-muted">posted by</span> <%= post.creator.username %>
+      <span class="text-muted">posted by</span> <%= link_to post.creator.username, user_path(post.creator) %>
       <span class="text-muted">at <%= display_datetime(post.created_at) %></span>
     </p>
     <small>

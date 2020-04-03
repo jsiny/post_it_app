@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def vote
     @vote = Vote.create(vote: params[:vote], creator: current_user, voteable: @post)
-    flash[:notice] = "Your comment was created"
+    flash[:notice] = "Your vote was registered"
     redirect_back(fallback_location: root_path)
   end
 

@@ -40,7 +40,13 @@ class PostsController < ApplicationController
 
   def vote
     @vote = Vote.create(vote: params[:vote], creator: current_user, voteable: @post)
-    flash[:notice] = "Your vote was registered"
+
+    if @vote.valid?
+      flash[:notice] = "Your vote was counted"
+    else
+      flash[:error] = "You can only vote on a post once"
+    end
+    
     redirect_back(fallback_location: root_path)
   end
 

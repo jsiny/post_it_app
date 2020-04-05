@@ -16,7 +16,25 @@ class Post < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = self.title.parameterize
+    temp_slug = self.title.parameterize
+    post = Post.find_by slug: temp_slug
+    count = 2
+
+    while post && post != self
+      temp_slug = append_suffix(temp_slug, count)
+      post = Post.find_by slug: temp_slug
+      count += 1
+    end
+
+    self.slug = temp_slug
+  end
+
+  def append_suffix(str, count)
+    if str.split('-').last.to_i != 0
+      return str.split('-').slice(0...-1).join('-') + "-" + count.to_s
+    else
+      return str + "-#{count}"
+    end
   end
 
   def to_param

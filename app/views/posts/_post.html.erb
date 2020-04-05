@@ -3,11 +3,11 @@
     <div class="col-sm-2">
       <div class="card text-center bg-light">
         <div class="card-body">
-          <%= render 'up_arrow', post: post %>
+          <%= render 'posts/up_arrow', post: post %>
           <br/>
           <span id="post_<%= post.id %>_votes" %><%= post.total_votes  %> votes</span>
           <br/>
-          <%= render 'down_arrow', post: post %>
+          <%= render 'posts/down_arrow', post: post %>
         </div>
       </div>
     </div>

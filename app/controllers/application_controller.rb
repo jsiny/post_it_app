@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def display_flash_for_vote(vote)
+    if vote.valid?
+      flash.now[:notice] = "Your vote was counted"
+    else
+      flash.now[:error] = "You can't vote on that more than once"
+    end
+  end
 end

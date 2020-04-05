@@ -52,11 +52,7 @@ class PostsController < ApplicationController
       end
 
       format.js do
-        if vote.valid?
-          flash.now[:notice] = "Your vote was counted"
-        else
-          flash.now[:error] = "You can't vote on that more than once"
-        end
+        display_flash_for_vote(vote)
       end
     end
   end

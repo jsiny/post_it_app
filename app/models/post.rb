@@ -13,10 +13,6 @@ class Post < ActiveRecord::Base
   validates :description, presence: true
   validates :url, uniqueness: true
 
-  def total_votes
-    up_votes - down_votes
-  end
-
   def generate_slug
     temp_slug = self.title.parameterize
     count = 2

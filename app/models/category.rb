@@ -9,4 +9,8 @@ class Category < ActiveRecord::Base
   def generate_slug
     self.slug = self.name.parameterize
   end
+
+  def to_param
+    self.slug
+  end
 end

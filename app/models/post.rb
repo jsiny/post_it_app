@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include ModelHelper
+
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   has_many :comments
   has_many :post_categories
@@ -17,24 +19,17 @@ class Post < ActiveRecord::Base
 
   def generate_slug
     temp_slug = self.title.parameterize
-    post = Post.find_by slug: temp_slug
     count = 2
 
-    while post && post != self
-      temp_slug = append_suffix(temp_slug, count)
+    loop do
       post = Post.find_by slug: temp_slug
+      break unless post && post != self
+
+      temp_slug = append_suffix(temp_slug, count)
       count += 1
     end
 
     self.slug = temp_slug
-  end
-
-  def append_suffix(str, count)
-    if str.split('-').last.to_i != 0
-      return str.split('-').slice(0...-1).join('-') + "-" + count.to_s
-    else
-      return str + "-#{count}"
-    end
   end
 
   def to_param

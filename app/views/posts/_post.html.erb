@@ -5,7 +5,7 @@
         <div class="card-body">
           <%= render 'posts/up_arrow', post: post %>
           <br/>
-          <span id="post_<%= post.id %>_votes" %><%= post.total_votes  %> votes</span>
+          <span id="post_<%= post.slug %>_votes" %><%= post.total_votes  %> votes</span>
           <br/>
           <%= render 'posts/down_arrow', post: post %>
         </div>

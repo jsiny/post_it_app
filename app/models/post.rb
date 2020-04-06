@@ -1,11 +1,11 @@
 class Post < ActiveRecord::Base
   include ModelHelper
+  include Voteable
 
   belongs_to :creator, foreign_key: 'user_id', class_name: 'User'
   has_many :comments
   has_many :post_categories
   has_many :categories, through: :post_categories
-  has_many :votes, as: :voteable
 
   before_save :generate_slug
 
@@ -30,15 +30,5 @@ class Post < ActiveRecord::Base
 
   def to_param
     self.slug
-  end
-
-  private
-
-  def up_votes
-    self.votes.where(vote: true).size
-  end
-
-  def down_votes
-    self.votes.where(vote: false).size
   end
 end

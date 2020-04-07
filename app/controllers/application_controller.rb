@@ -10,10 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    unless logged_in?
-      flash[:error] = "You must be logged in to do that"
-      redirect_to root_path
-    end
+    access_denied unless logged_in?
+  end
+
+  def require_admin
+    access_denied unless logged_in? and current_user.admin?
   end
 
   def display_flash_for_vote(vote)
@@ -22,5 +23,10 @@ class ApplicationController < ActionController::Base
     else
       flash.now[:error] = "You can't vote on that more than once"
     end
+  end
+
+  def access_denied
+    flash[:error] = "You can't do that"
+    redirect_to root_path
   end
 end

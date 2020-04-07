@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def display_datetime(dt)
-    dt.to_s(:long)
+    dt.strftime("%d/%m/%Y %R %Z")
   end
 
   def ajax_flash(div_id)

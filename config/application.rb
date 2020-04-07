@@ -12,7 +12,10 @@ module Postit
     config.load_defaults 6.0
 
     # Include lib modules in PATH
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib) 
+
+    # Define default timezone
+    config.time_zone = 'Paris'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
